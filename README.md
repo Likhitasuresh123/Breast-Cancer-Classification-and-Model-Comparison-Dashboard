@@ -50,6 +50,3 @@ pip install -r requirements.txt
 python train_models.py
 streamlit run app.py
 ```
-
-For Streamlit Community Cloud, deploy `app.py` from the repository root and keep `model/`, `test_data.csv`, and `requirements.txt` in the same project.
-
