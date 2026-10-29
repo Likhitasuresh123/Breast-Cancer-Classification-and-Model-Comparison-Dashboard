@@ -8,11 +8,6 @@ This project predicts whether a breast mass is malignant or benign from diagnost
 
 The project uses the public [UCI Breast Cancer Wisconsin Diagnostic dataset](https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic), loaded through scikit-learn's packaged copy of the UCI data. It contains 569 instances, 30 numeric input features, and the binary target column `diagnosis` with the labels `malignant` and `benign`. The included `test_data.csv` is the stratified held-out test set used by the app. The training script can reproduce the split and model artifacts.
 
-## GitHub repository link
-
-Replace this placeholder with the public repository URL before submitting:
-
-`https://github.com/<your-username>/breast-cancer-classification`
 
 ## Models used
 
@@ -56,8 +51,3 @@ python train_models.py
 streamlit run app.py
 ```
 
-For Streamlit Community Cloud, deploy `app.py` from the repository root and keep `model/`, `test_data.csv`, and `requirements.txt` in the same project.
-
-## Academic integrity
-
-This is an initial working version for learning and should be customized before submission. Verify the dataset source, run the experiment in the required BITS Virtual Lab, add your own screenshot, replace the repository link, and explain observations from your actual metrics. Keep the commit history visible when publishing the repository.
