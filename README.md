@@ -72,11 +72,13 @@ Confusion matrices on the 114-row test set (72 benign, 42 malignant), taken from
 
 The app provides:
 
-1. CSV upload for labeled test data.
-2. A dropdown for selecting any saved model.
-3. Accuracy, AUC, precision, recall, F1, and MCC display.
-4. A confusion matrix and classification report.
-5. A prediction preview with confidence values.
+1. CSV upload for labeled test data, with a downloadable sample `test_data.csv`.
+2. A dropdown for selecting any saved model, with a short configuration card.
+3. A light/dark appearance switch in the sidebar.
+4. An **Evaluation** tab with Accuracy, AUC, precision, recall, F1, and MCC cards (each showing the model's rank among the five), a confusion matrix, an ROC curve, and a classification report.
+5. A **Predictions** tab with a filterable prediction preview, probability bars, and a predictions CSV download.
+6. A **Model comparison** tab that scores all five saved models on the same uploaded data and shows a leaderboard, a metric heatmap, and a per-metric ranking chart.
+7. A **Dataset** tab with class balance, a feature distribution explorer, and summary statistics.
 
 The app includes a binary probability fallback for older serialized Logistic Regression artifacts. All dependency versions in `requirements.txt` are pinned. The saved models were serialized with scikit-learn 1.9.0 and joblib 1.6.0, so the deployed app must load them with the same versions.
 
