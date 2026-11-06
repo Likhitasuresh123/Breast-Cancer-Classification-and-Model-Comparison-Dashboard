@@ -158,6 +158,21 @@ CSS = Template(
 .model-card .name { font-weight: 700; color: $text; margin: 0.15rem 0; }
 .model-card .cfg { font-size: 0.82rem; color: $muted; }
 .footer { text-align: center; color: $muted; font-size: 0.8rem; margin-top: 2rem; }
+.empty-state {
+  background: $surface; border: 1.5px dashed $accent; border-radius: 18px; padding: 2.2rem 2rem;
+  text-align: center; box-shadow: $shadow;
+}
+.empty-state .icon { font-size: 2.6rem; }
+.empty-state h3 { color: $text; margin: 0.4rem 0; }
+.empty-state p { color: $muted !important; }
+.empty-state .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.8rem; margin-top: 1.2rem; text-align: left; }
+@media (max-width: 800px) { .empty-state .steps { grid-template-columns: 1fr; } }
+.empty-state .steps div { background: $bg; border: 1px solid $border; border-radius: 12px; padding: 0.8rem 0.9rem; color: $text; font-size: 0.9rem; }
+.empty-state .steps b {
+  display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; margin-right: 0.5rem;
+  border-radius: 50%; background: linear-gradient(120deg, $accent2, $accent); color: #ffffff;
+}
+.empty-state code { background: $border; color: $accent; }
 $dataframe_css
 </style>
 """
@@ -295,15 +310,25 @@ st.markdown(
 )
 
 if uploaded_file is None:
-    data = pd.read_csv(ROOT / "test_data.csv")
-    st.info("Showing the included held-out test data. Upload another compatible CSV in the sidebar to evaluate it.", icon="ℹ️")
-else:
-    try:
-        data = pd.read_csv(uploaded_file)
-    except (pd.errors.ParserError, pd.errors.EmptyDataError, UnicodeDecodeError) as error:
-        st.error(f"Could not read the uploaded CSV: {error}")
-        st.stop()
-    st.success(f"Loaded `{uploaded_file.name}` with {len(data)} rows.", icon="✅")
+    st.markdown(
+        '<div class="empty-state"><div class="icon">📂</div>'
+        "<h3>Upload labeled test data to begin</h3>"
+        "<p>No metrics are shown until you upload a CSV. Use <b>Upload labeled test data</b> in the sidebar.</p>"
+        '<div class="steps">'
+        "<div><b>1</b>Choose a model in the sidebar</div>"
+        "<div><b>2</b>Upload a CSV with the 30 features and a <code>diagnosis</code> column</div>"
+        "<div><b>3</b>Explore metrics, predictions, and model comparisons</div>"
+        "</div></div>",
+        unsafe_allow_html=True,
+    )
+    st.stop()
+
+try:
+    data = pd.read_csv(uploaded_file)
+except (pd.errors.ParserError, pd.errors.EmptyDataError, UnicodeDecodeError) as error:
+    st.error(f"Could not read the uploaded CSV: {error}")
+    st.stop()
+st.success(f"Loaded `{uploaded_file.name}` with {len(data)} rows.", icon="✅")
 
 data.columns = [str(column).strip() for column in data.columns]
 if TARGET not in data.columns:
