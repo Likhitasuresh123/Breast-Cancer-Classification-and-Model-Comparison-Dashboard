@@ -2,6 +2,8 @@
 
 Repository: [github.com/Likhitasuresh123/Breast-Cancer-Classification-and-Model-Comparison-Dashboard](https://github.com/Likhitasuresh123/Breast-Cancer-Classification-and-Model-Comparison-Dashboard)
 
+Live Streamlit app: [breast-cancer-classification-and-model-comparison-dashboard-fc.streamlit.app](https://breast-cancer-classification-and-model-comparison-dashboard-fc.streamlit.app/)
+
 ## Problem statement
 
 This project predicts whether a breast mass is malignant or benign from diagnostic measurements. It is a binary classification problem. The Streamlit dashboard compares five classifiers and evaluates them on a held-out labeled test CSV without retraining.
@@ -69,6 +71,8 @@ Confusion matrices on the 114-row test set (72 benign, 42 malignant), taken from
 - Because of the small test set, the SVM's lead over Logistic Regression is a single test case. Cross-validation would be needed before treating the difference as meaningful.
 
 ## Streamlit app
+
+The app is deployed on Streamlit Community Cloud: <https://breast-cancer-classification-and-model-comparison-dashboard-fc.streamlit.app/>
 
 The app provides:
 
