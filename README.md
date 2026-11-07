@@ -111,13 +111,6 @@ streamlit run app.py
 
 The trained models are committed in `model/`, so you do not need to retrain before launching the app. To regenerate the models, `test_data.csv`, `metrics.csv`, and `model/metrics.json`, run `python train_models.py`. Because the split and the models use `random_state=42`, a clean run reproduces the committed results.
 
-## Deploy on Streamlit Community Cloud
-
-1. Push this repository to GitHub, including `model/*.joblib` and `test_data.csv`.
-2. Sign in at [share.streamlit.io](https://share.streamlit.io) with GitHub and choose **Create app**.
-3. Select this repository, the `main` branch, and `app.py` as the main file path.
-4. Under **Advanced settings**, choose Python 3.11 or newer (for example, 3.12).
-5. Click **Deploy**. Streamlit Cloud installs `requirements.txt` automatically.
 
 ## Validation checklist
 
